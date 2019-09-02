@@ -1,0 +1,25 @@
+{
+    "name": "@trulyacerbic/antd-button-login-google",
+    "description": "A NextJS/Ant.Design component for Login With Google (OAuth2) feature. Requires support of a backend server (not included) to proccess Google Server Login flow",
+    "version": "1.0.0",
+    "keywords": [
+        "nextjs",
+        "react",
+        "antd",
+        "ant.design",
+        "button",
+        "oauth",
+        "oauth2",
+        "google"
+    ],
+    "main": "index.ts",
+    "author": "Gleb Varenov <kuzzdra@gmail.com>",
+    "license": "MIT",
+    "dependencies": {
+        "antd": "^3.23.0",
+        "local-storage": "^2.0.0",
+        "next": "^9.0.5",
+        "querystring": "^0.2.0",
+        "react": "^16.9.0"
+    }
+}
