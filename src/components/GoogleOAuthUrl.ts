@@ -1,7 +1,8 @@
+/// <reference types="node"/>
 import querystring from "querystring";
 
 export interface GoogleRedirectionState {
-    csrfToken: string;
+    csrfToken?: string;
     returnTo: string;
 }
 
