@@ -15,7 +15,7 @@ export interface GoogleLoginState {
     // token from browser local-storage.
     isLoggedIn: boolean;
 
-    // URL of Google Auth screen (redirect browers there to start login process)
+    // URL of Google Auth screen (redirect browser there to start login process)
     // if csrfToken is provided, it is added to authUrl State parameter (will be
     // sent to the redirectTo target as part of Auth process)
     authURL: (csrfToken?: string) => string;
