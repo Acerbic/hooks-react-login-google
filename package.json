@@ -1,7 +1,7 @@
 {
     "name": "@trulyacerbic/hooks-react-login-google",
     "description": "React custom hooks for Login With Google (OAuth2) feature. Requires support of a backend server (not included) to proccess Google Server Login flow",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "keywords": [
         "react-hooks",
         "react",
@@ -10,6 +10,10 @@
         "google"
     ],
     "author": "Gleb Varenov <kuzzdra@gmail.com>",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/Acerbic/hooks-react-login-google"
+    },
     "license": "MIT",
     "private": false,
     "types": "dist/index.d.ts",
