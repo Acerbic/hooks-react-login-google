@@ -1,7 +1,7 @@
 {
     "name": "@trulyacerbic/hooks-react-login-google",
     "description": "React custom hooks for Login With Google (OAuth2) feature. Requires support of a backend server (not included) to proccess Google Server Login flow",
-    "version": "1.0.7",
+    "version": "1.0.0",
     "keywords": [
         "react-hooks",
         "react",
