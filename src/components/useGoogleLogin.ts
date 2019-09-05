@@ -6,9 +6,13 @@ import { buildOAuthURL } from "./GoogleOAuthUrl";
 const DEFAULT_STORAGE_TOKEN_NAME = "login-with-google-token";
 
 export interface GoogleLoginState {
-    // initial state - checking on mounting
+    // This is true at first. When this flag turns false, you may use isLoggedIn
+    // to track current state of user login.
     loading: boolean;
-    // is user properly logged in (with valid token)
+    // is user properly logged in (with valid token).
+    // If this is false, you may use authURL() to get a URL link to initiate
+    // login process; if this is true you may use logout() to clear user login
+    // token from browser local-storage.
     isLoggedIn: boolean;
 
     // URL of Google Auth screen (redirect browers there to start login process)
@@ -21,12 +25,16 @@ export interface GoogleLoginState {
 }
 
 export interface GoogleLoginOptions {
-    // id of this app, as registered with google developers' console
+    // id of the app, as registered with google developers' console
     clientId: string;
 
-    // url of a page where user's browser should be returned after
-    // authentication ("success login" page); that redirection will contain a
-    // URL query parameter with the authentication resulting session token
+    // Google API access scopes requested from the user. If omitted, the default
+    // ones are used: ["email", "profile", "openid"]
+    scopes?: string[];
+
+    // URL of a page where user's browser should be returned after
+    // authentication ("login success" page); that redirection will contain a
+    // URL query parameter with the resulting authentication session token
     returnTo: string;
 
     // Endpoint of the backend to be redirected to by Google authentication
@@ -48,10 +56,15 @@ export const useGoogleLogin = (opts: GoogleLoginOptions): GoogleLoginState => {
     let [isLoggedIn, change_isLoggedIn] = useState(false);
 
     const authURL = (csrfToken?: string) =>
-        buildOAuthURL(opts.clientId, opts.redirectTo, {
-            csrfToken,
-            returnTo: opts.returnTo,
-        });
+        buildOAuthURL(
+            opts.clientId,
+            opts.redirectTo,
+            {
+                csrfToken,
+                returnTo: opts.returnTo,
+            },
+            opts.scopes
+        );
 
     const storageTokenName =
         opts.storageTokenName || DEFAULT_STORAGE_TOKEN_NAME;

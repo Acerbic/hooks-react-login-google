@@ -16,9 +16,7 @@ export const buildOAuthURL = function(
         response_type: "code", // code->tokens flow
         client_id,
         redirect_uri: apiserver_google_auth_redirect_uri,
-        scope: ["email", "profile", "openid"]
-            .concat(scopes ? scopes : [])
-            .join(" "),
+        scope: scopes ? scopes.join(" ") : "email profile openid",
         include_granted_scopes: true,
         access_type: "offline", // + refresh_token
         // for session id,etc
